@@ -1,3 +1,4 @@
+// statefull
 var CommentBox = React.createClass({
   getInitialState: function(){
     return {data: []}
@@ -6,15 +7,24 @@ var CommentBox = React.createClass({
     return(
       <div className="commentBox">
         <h1>Comments App</h1>
+        <CommentList />
       </div>
     )
   }
   /*
-  alternative: 
+  alternative:
   render (){
 
   }
   */
+})
+
+// stateless
+var CommentList = React.createClass({
+  render: function(){
+    var h2 = <h2>Comment List</h2>
+    return (h2) // or return h2
+  }
 })
 
 ReactDOM.render(
