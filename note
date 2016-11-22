@@ -4,3 +4,4 @@
 4. nama componen pake huruf besar
 5. state itu status, posisi sekarang dimana, gunanya untuk nanganin data, cth: value="this.state.name", this.setState = "", bisa liat data dari masa lalu selama ga di destroy
 6. yield mirip pointer di c++, untuk record perubahan
+7. CommentBox, CommentList, Comment, CommentInput. CommentList di loop ketika ada CommentInput
