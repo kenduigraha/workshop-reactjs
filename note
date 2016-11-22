@@ -1,0 +1,6 @@
+1. prop bikin properties, properties itu berada di componen & untuk bikin attribute di html contoh bikin type="text" di element input
+2. anonymous function, contohnya pas di callback & di d3.js
+3. function bisa dimasukin ke dalam componen
+4. nama componen pake huruf besar
+5. state itu status, posisi sekarang dimana, gunanya untuk nanganin data, cth: value="this.state.name", this.setState = "", bisa liat data dari masa lalu selama ga di destroy
+6. yield mirip pointer di c++, untuk record perubahan
