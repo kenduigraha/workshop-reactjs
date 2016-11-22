@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": 1,
+    "author": "ken",
+    "text": "cool man"
+  }, {
+    "id": 2,
+    "author": "dui",
+    "text": "Yeah so cool"
+  }
+]
