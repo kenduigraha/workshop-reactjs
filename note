@@ -6,3 +6,4 @@
 6. yield mirip pointer di c++, untuk record perubahan
 7. CommentBox, CommentList, Comment, CommentInput. CommentList di loop ketika ada CommentInput
 8. createelement atau JSX untuk bikin componen. JSX bikin sintaks HTML di JS
+9. statefull berupa class yg return nya berhubugan dgn stateless untuk diubah this.props. nya, stateless berupa function yang merubah value
