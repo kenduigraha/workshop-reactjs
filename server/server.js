@@ -39,7 +39,7 @@ app.post('/api/comments', function(req, res){
     }else{
       var comments = JSON.parse(data)
       var newComment = {
-        id: Date.now(),
+        id: req.body.id,
         author: req.body.author,
         text: req.body.text
       }
@@ -49,7 +49,7 @@ app.post('/api/comments', function(req, res){
         if(err){
           console.log(err);
         }
-        res.status(200).json(comment)
+        res.status(200).json(comments)
       })
     }
   })
