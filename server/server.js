@@ -3,7 +3,9 @@ const express = require('express');
 const path = require('path');
 // const cors = require('cors');
 const bodyParser = require('body-parser');
-const app = express()
+const app = express();
+
+const router = express.Router();
 
 // const COMMENTS_FILE = require('../data/comments.json')
 const COMMENTS_FILE = path.join(__dirname, 'data/comments.json')
@@ -19,10 +21,12 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(function(req, res, next){
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Cache-Control', 'no-cache')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
   next()
 })
 
 app.get('/api/comments', function(req, res){
+  console.log('get all comments');
   fs.readFile(COMMENTS_FILE, function(err, data){
     if(err){
       console.log(err);
@@ -33,6 +37,7 @@ app.get('/api/comments', function(req, res){
 })
 
 app.post('/api/comments', function(req, res){
+  console.log('new comment');
   fs.readFile(COMMENTS_FILE, function(err, data){
     if(err){
       console.log(err);
@@ -45,11 +50,35 @@ app.post('/api/comments', function(req, res){
       }
 
       comments.push(newComment)
+
       fs.writeFile(COMMENTS_FILE, JSON.stringify(comments, null, 4), function(err){
         if(err){
           console.log(err);
         }
         res.status(200).json(comments)
+      })
+    }
+  })
+})
+
+app.delete('/api/comments/:id', function(req, res) {
+  console.log('delete');
+  fs.readFile(COMMENTS_FILE, function(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      var comments = JSON.parse(data)
+
+      var new_comments = comments.filter( comment => comment.id != req.params.id)
+
+      // console.log(new_comments);
+
+      fs.writeFile(COMMENTS_FILE, JSON.stringify(new_comments, null, 4), function(err){
+        if(err){
+          console.log(err);
+        }
+        console.log();
+        res.status(200).json(new_comments)
       })
     }
   })
