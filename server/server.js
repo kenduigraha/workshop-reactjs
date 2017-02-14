@@ -77,13 +77,43 @@ app.delete('/api/comments/:id', function(req, res) {
         if(err){
           console.log(err);
         }
-        console.log();
         res.status(200).json(new_comments)
       })
     }
   })
 })
 
+app.put('/api/comments/:id', function(req, res) {
+  console.log('update');
+  fs.readFile(COMMENTS_FILE, function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      var comments = JSON.parse(data)
+
+      var update_comments = comments.map( comment => {
+        if (comment.id === req.params.id) {
+          // return Object.assign({}, comment, {
+          //   author: req.body.author,
+          //   text: req.body.text
+          // })
+          comment.author = req.body.author
+          comment.text = req.body.text
+          return comment
+        } else {
+          return comment
+        }
+      })
+
+      fs.writeFile(COMMENTS_FILE, JSON.stringify(update_comments, null, 4), function(err){
+        if(err){
+          console.log(err);
+        }
+        res.status(200).json(update_comments)
+      })
+    }
+  })
+})
 app.listen(app.get('port'), function(){
   console.log(`server is running`);
 })
